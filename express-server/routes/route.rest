@@ -1,0 +1,25 @@
+GET http://localhost:3000/tees
+
+###
+GET http://localhost:3000/tees/604ed69feea2182714b16c44
+
+###
+POST http://localhost:3000/tees
+Content-Type: application/json
+
+{
+    "title": "Test Title 5",
+    "description": "Test Description 2",
+    "artist": "Test Artist 2"
+}
+
+###
+DELETE http://localhost:3000/tees/604ed6b9eea2182714b16c45
+
+###
+PATCH http://localhost:3000/tees/604ed69feea2182714b16c44
+Content-Type: application/json
+
+{
+    "title": "Updated Name"
+}
