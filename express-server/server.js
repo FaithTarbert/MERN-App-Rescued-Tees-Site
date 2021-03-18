@@ -31,8 +31,8 @@ app.use(cors());
 app.use(express.json());
 
 //require routes file
-const teesRouter = require('./routes/tees');
-app.use('/tees', teesRouter);
+const teesRouter = require('./routes/routes');
+app.use('/', teesRouter);
 
 
 // app.listen(3000, () => console.log('Server Started On Port 3000'));
