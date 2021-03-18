@@ -24,7 +24,7 @@ const NavBar = () => {
     </ReactBootstrap.Nav>
     <ReactBootstrap.Form inline>
       <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <ReactBootstrap.Button variant="outline-success">Search</ReactBootstrap.Button>
+      <ReactBootstrap.Button variant="outline-light">Search</ReactBootstrap.Button>
     </ReactBootstrap.Form>
   </ReactBootstrap.Navbar.Collapse>
 </ReactBootstrap.Navbar>
