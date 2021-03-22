@@ -15,9 +15,10 @@ router.get('/', async (req, res) => {
 });
 
 //get one
-router.get('/:id', getId, (req, res) => {
+router.get('/update/:id', getId, (req, res) => {
     //returns json
-    res.json(res.tee);
+    console.log("get request from server", res.tee);
+    res.status(200).json(res.tee);
 });
 
 //create one
@@ -37,19 +38,26 @@ router.post('/', async (req, res) => {
 });
 
 //update one
-router.patch('/:id', getId, async (req, res) => {
-    if(req.body.title != null){
-        res.tee.title = req.body.title;
+router.post('/update/:id', getId, async (req, res) => {
+    console.log("this is the post by id obj ", res.tee);
+    console.log("this is the post by id obj req tee title ", req.body.newTitle);
+
+    if(req.body.newTitle != null){
+        res.tee.title = req.body.newTitle;
     }
-    if(req.body.description != null){
-        res.tee.description = req.body.description;
+    if(req.body.newDescription != null){
+        res.tee.description = req.body.newDescription;
     }
-    if(req.body.artist != null){
-        res.tee.artist = req.body.artist;
+    if(req.body.newArtist != null){
+        res.tee.artist = req.body.newArtist;
+    }
+    if(req.body.newImage != null){
+        res.tee.image = req.body.newImage;
     }
     //update only differences
     try {
         const updatedTee = await res.tee.save();
+
         res.json(updatedTee);
     } catch (error) {
         //400 means user passed bad data
@@ -71,6 +79,7 @@ router.delete('/:id', getId, async (req, res) => {
 async function getId(req, res, next){
     //empty variable to hold id, if found
     let tee;
+    // console.log("get id helper ", req.params.id);
     try {
         tee = await Tee.findById(req.params.id);
         if (tee == null){
@@ -83,6 +92,7 @@ async function getId(req, res, next){
     }
     //assign found id into variable, for use in routes above
     res.tee = tee;
+    // console.log('res.tee is ', res.tee);
     //moves on to processing next thing: the route
     next();
 }
