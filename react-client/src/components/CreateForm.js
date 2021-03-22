@@ -14,10 +14,6 @@ const CreateForm = () => {
 
     const history = useHistory();
 
-    // const onSubmit = handleSubmit((data) => {
-    //     alert(JSON.stringify(data));
-    // });
-
     const handleSubmit = (e) => {
         //this prevents the page from default refreshing
         e.preventDefault();
@@ -26,7 +22,7 @@ const CreateForm = () => {
         //this is to your express server port NOT REACT server port
         axios.post('http://localhost:5000', tee);
         //this fires the get all api so when index renders, the new post appears without hitting refresh
-        getTees()
+        getTees();
         history.push('/');
     };
     return ( 

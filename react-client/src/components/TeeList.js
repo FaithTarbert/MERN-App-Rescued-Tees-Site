@@ -7,7 +7,7 @@ import './Box.css';
     
     //set the variable tees and watch it for updates
     const [tees, setTees] = useState([]);
-    //useEffect fires on first page load passing in []
+    //useEffect fires a fetch/getall request on first page load
     useEffect(() => {
         fetch('http://localhost:5000/')
         .then(res => {
@@ -19,7 +19,7 @@ import './Box.css';
         .then(data => setTees(data))
         .catch(err => console.log(err));
     },[]);
-    //this is the single bootstrap card template styled with Box.css, used for rendering all data (tiled)
+    //this populates the single bootstrap card template, styled with Box.css/box-home, renders all data (tiled cards)
     const renderCard = (tee) => {
         return(
             <Card style={{ width: '18rem' }} key={tee._id} className="box-home">

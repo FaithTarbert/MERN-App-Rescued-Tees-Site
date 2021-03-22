@@ -8,7 +8,7 @@ POST http://localhost:3000/tees
 Content-Type: application/json
 
 {
-    "title": "Test Title 5",
+    "title": "New Test",
     "description": "Test Description 2",
     "artist": "Test Artist 2"
 }
