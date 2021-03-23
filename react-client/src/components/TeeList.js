@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {Card, Button} from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import './Box.css';
 
     const TeeList = () => {
-    
     //set the variable tees and watch it for updates
     const [tees, setTees] = useState([]);
-    //useEffect fires a fetch/getall request on first page load
+    const { id } = useParams();
+    console.log(id);
+    
+    //useEffect fires a fetch/get all request on first page load
     useEffect(() => {
         fetch('http://localhost:5000/')
         .then(res => {
@@ -18,7 +20,8 @@ import './Box.css';
         })
         .then(data => setTees(data))
         .catch(err => console.log(err));
-    },[]);
+    },[tees]);
+
     //this populates the single bootstrap card template, styled with Box.css/box-home, renders all data (tiled cards)
     const renderCard = (tee) => {
         return(
@@ -29,11 +32,8 @@ import './Box.css';
                         <Card.Text>
                         {tee.description}
                         </Card.Text>
-                        <Link to={`/update/${tee._id}`}>
-                        <Button variant="primary" >Update Tee</Button>{' '}
-                        </Link>
-                        <Link to={`/delete/${tee._id}`}>
-                        <Button variant="primary" >Delete Tee</Button>
+                        <Link to={`/details/${tee._id}`}>
+                        <Button variant="primary" >Details</Button>{' '}
                         </Link>
                     </Card.Body>
                     </Card>

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import {Card, Button, Form, Container, Row, Col } from 'react-bootstrap';
-import { Link, useRouteMatch, useParams, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Form, Container, Row, Col } from 'react-bootstrap';
+import { useParams, useHistory } from "react-router-dom";
 import './Box.css';
-import { getTees, updateTee } from '../api';
+import { getTees } from '../api';
 import useFetch from './useFetch';
 import axios from 'axios';
 

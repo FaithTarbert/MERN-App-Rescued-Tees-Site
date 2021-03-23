@@ -18,9 +18,6 @@ const NavBar = () => {
       <Link to="/update">
       <ReactBootstrap.Nav.Link href="#update">Update Tee</ReactBootstrap.Nav.Link>
       </Link>
-      <Link to="/delete">
-      <ReactBootstrap.Nav.Link href="#delete">Delete Tee</ReactBootstrap.Nav.Link>
-      </Link>
     </ReactBootstrap.Nav>
     <ReactBootstrap.Form inline>
       <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
