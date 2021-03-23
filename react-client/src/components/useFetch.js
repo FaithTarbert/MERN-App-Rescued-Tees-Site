@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const useFetch = (url) => {
+    console.log("this is the useFetch top #1 ", url)
     //HOOKS useState
     const [data, setData] = useState(null);
     // const [isPending, setIsPending] = useState(true);
@@ -13,7 +14,7 @@ const useFetch = (url) => {
         // console.log('useEffect url ', url);
         fetch(url, { signal: abortCont.signal })
         .then(res => {
-            // console.log("this the useFetch res 2", res);
+            console.log("this the useFetch res 2", res);
             if(!res.ok){
                 throw Error('Could not fetch the data for that resource');
             }

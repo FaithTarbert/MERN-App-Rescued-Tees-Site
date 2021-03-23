@@ -3,7 +3,7 @@ const router = express.Router();
 //require our mdb model
 const Tee = require('../models/tees');
 
-//get all
+//get all tees for home/index
 router.get('/', async (req, res) => {
     try {
         const tees = await Tee.find();
@@ -14,15 +14,15 @@ router.get('/', async (req, res) => {
     }
 });
 
-//get one
-router.get('/update/:id', getId, (req, res) => {
+//details one tee for details page
+router.get('/details/:id', getId, (req, res) => {
     //returns json
     console.log("get request from server", res.tee);
     res.status(200).json(res.tee);
 });
 
-//create one
-router.post('/', async (req, res) => {
+//create tee
+router.post('/create', async (req, res) => {
     const tee = new Tee({
        title: req.body.title,
        description: req.body.description,
@@ -35,6 +35,13 @@ router.post('/', async (req, res) => {
         //400 means user sent bad data
         res.status(400).json({ message: error.message });
     }
+});
+
+//get one tee to populate update/edit page
+router.get('/update/:id', getId, (req, res) => {
+    //returns json
+    console.log("get request from server", res.tee);
+    res.status(200).json(res.tee);
 });
 
 //update one
@@ -66,7 +73,7 @@ router.post('/update/:id', getId, async (req, res) => {
 });
 
 //delete one
-router.delete('/:id', getId, async (req, res) => {
+router.get('/delete/:id', getId, async (req, res) => {
     try {
         await res.tee.remove();
         res.json({ message: 'Deleted' });

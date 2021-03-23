@@ -20,7 +20,7 @@ const CreateForm = () => {
         //this is grabbing the populated tee object from the form input
         const tee = { title, description, artist, image };
         //this is to your express server port NOT REACT server port
-        axios.post('http://localhost:5000', tee);
+        axios.post('http://localhost:5000/create', tee);
         //this fires the get all api so when index renders, the new post appears without hitting refresh
         getTees();
         history.push('/');
@@ -52,7 +52,7 @@ const CreateForm = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.File value={image} id="exampleFormControlFile1" label="Image"
+                            <Form.File value={image} label="Image"
                             onChange={(e) => setImage(e.target.value)}
                             />
                         </Form.Group>
