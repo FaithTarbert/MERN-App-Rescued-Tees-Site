@@ -19,10 +19,12 @@ const CreateForm = () => {
         e.preventDefault();
         //this is grabbing the populated tee object from the form input
         const tee = { title, description, artist, image };
+        console.log(tee);
+
         //this is to your express server port NOT REACT server port
         axios.post('http://localhost:5000/create', tee);
         //this fires the get all api so when index renders, the new post appears without hitting refresh
-        getTees();
+        // getTees();
         history.push('/');
     };
     return ( 
@@ -40,7 +42,7 @@ const CreateForm = () => {
                         <Form.Group>
                             <Form.Label>Description</Form.Label>
                             <Form.Control 
-                            value={description} as="textarea" rows={5}
+                            value={description} as="textarea" rows={5} placeholder="Type Your Description..."
                             onChange={(e) => setDescription(e.target.value)}
                             />
                         </Form.Group>
@@ -52,16 +54,18 @@ const CreateForm = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.File value={image} label="Image"
+                        <Form.Label>Image</Form.Label>
+                            <Form.Control
+                            value={image} placeholder="Image Url"
                             onChange={(e) => setImage(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Group>
                         <button type="submit">Submit</button>
-                        <p>{ title }</p>
+                        {/* <p>{ title }</p>
                         <p>{ description }</p>
                         <p>{ artist }</p>
-                        <p>{ image }</p>
+                        <p>{ image }</p> */}
                         </Form.Group>
                     </Form>
                 </Col>
