@@ -26,7 +26,8 @@ router.post('/create', async (req, res) => {
     const tee = new Tee({
        title: req.body.title,
        description: req.body.description,
-       artist: req.body.artist, 
+       artist: req.body.artist,
+       image: req.body.image
     });
     try {
         const newTee = await tee.save();

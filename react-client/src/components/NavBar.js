@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import * as ReactBootstrap from 'react-bootstrap';
+import { Card, Alert } from 'react-bootstrap';
+import { useAuth } from "../contexts/AuthContext";
 
 const NavBar = () => {
+    const [error, setError] = useState("");
+    
+    function handleLogout(){
+      //
+    }
+
     return ( 
         <ReactBootstrap.Navbar bg="primary" expand="sm">
   <ReactBootstrap.Navbar.Brand href="#home">Rescued Tees</ReactBootstrap.Navbar.Brand>
@@ -18,6 +26,19 @@ const NavBar = () => {
       <Link to="/update">
       <ReactBootstrap.Nav.Link href="#update">Update Tee</ReactBootstrap.Nav.Link>
       </Link>
+      <Link to="/signup">
+      <ReactBootstrap.Nav.Link href="#signup">Signup</ReactBootstrap.Nav.Link>
+      </Link>
+      <Link to="/login">
+      <ReactBootstrap.Nav.Link href="#login">Login</ReactBootstrap.Nav.Link>
+      </Link>
+      <ReactBootstrap.Nav.Link onClick={handleLogout}>Logout</ReactBootstrap.Nav.Link>
+      <Link to="/profile">
+      <ReactBootstrap.Nav.Link href="#profile">Profile</ReactBootstrap.Nav.Link>
+      </Link>
+      
+      <Card><Card.Body>{error && <Alert variant="danger">{error}</Alert>}</Card.Body></Card>
+
     </ReactBootstrap.Nav>
     <ReactBootstrap.Form inline>
       <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
