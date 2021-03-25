@@ -24,7 +24,7 @@ app.use(express.json());
 
 //require routes file
 const teesRouter = require('./routes/routes');
-app.use('/', teesRouter);
+app.use('/api/routes', teesRouter);
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
   app.use(express.static('client/build'));
