@@ -1,6 +1,6 @@
 
 //this is boilerplate from firebase, hiding key values using env file
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import 'firebase/auth';
 
 const app = firebase.initializeApp({
