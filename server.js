@@ -18,7 +18,11 @@ mongoose.connect(process.env.DB_URI,  {
     .then((res) => console.log('db connected!'))
     .catch((err) => console.log(err));
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', //<--location of the react app we are connecting to
+  credenials: true
+}));
+
 //this middleware allows us to use json in an element like get/post etc.
 app.use(express.json());
 
@@ -26,14 +30,7 @@ app.use(express.json());
 const teesRouter = require('./routes/routes');
 app.use('/api/routes', teesRouter);
 
-// if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-//   app.use(express.static('client/build'));
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname + '/client/build/index.html'));
-//   });
-// }
-
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.listen(process.env.PORT || 5000);
