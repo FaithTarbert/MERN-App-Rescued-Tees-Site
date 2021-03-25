@@ -26,6 +26,13 @@ app.use(express.json());
 const teesRouter = require('./routes/routes');
 app.use('/', teesRouter);
 
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  });
+}
+
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));
 
