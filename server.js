@@ -31,6 +31,8 @@ const teesRouter = require('./routes/routes');
 app.use('/api/routes', teesRouter);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
+app.get('/*', function (req, res) {
+app.use(express.static(path.join(__dirname, 'client/build', 'index.html' )));
+});
 
 app.listen(process.env.PORT || 5000);
