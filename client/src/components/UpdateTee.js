@@ -15,7 +15,7 @@ const UpdateTee = () => {
 
     const { id } = useParams();
     console.log(id);
-    const { data: tee, error } = useFetch(`/update/${id}`);
+    const { data: tee, error } = useFetch(`/api/routes/update/${id}`);
 
     const handleSubmit = (e) => {
         //this prevents the page from default refreshing
@@ -24,7 +24,7 @@ const UpdateTee = () => {
         const newTee = { newTitle, newDescription, newArtist, newImage };
         console.log(newTee);
         //this is to your express server port NOT REACT server port
-        axios.post(`/update/${id}`, newTee);
+        axios.post(`/api/routes/update/${id}`, newTee);
         //this fires the get all api so when index renders, the new post appears without hitting refresh
         getTees();
         history.push('/');

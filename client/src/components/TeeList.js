@@ -11,7 +11,7 @@ import './Box.css';
     
     //useEffect fires a fetch/get all request on first page load
     useEffect(() => {
-        fetch('http://localhost:5000/')
+        fetch('/api/routes')
         .then(res => {
             if(res.ok) {
                 console.log("response ok");

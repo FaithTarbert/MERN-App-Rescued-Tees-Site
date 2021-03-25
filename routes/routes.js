@@ -4,7 +4,7 @@ const router = express.Router();
 const Tee = require('../models/tees');
 
 //get all tees for home/index
-router.get('/', async (req, res) => {
+router.get('/api/routes', async (req, res) => {
     try {
         const tees = await Tee.find();
         res.json(tees);
@@ -15,14 +15,14 @@ router.get('/', async (req, res) => {
 });
 
 //details one tee for details page
-router.get('/details/:id', getId, (req, res) => {
+router.get('/api/routes/details/:id', getId, (req, res) => {
     //returns json
     console.log("get request from server", res.tee);
     res.status(200).json(res.tee);
 });
 
 //create tee
-router.post('/create', async (req, res) => {
+router.post('/api/routes/create', async (req, res) => {
     const tee = new Tee({
        title: req.body.title,
        description: req.body.description,
@@ -39,14 +39,14 @@ router.post('/create', async (req, res) => {
 });
 
 //get one tee to populate update/edit page
-router.get('/update/:id', getId, (req, res) => {
+router.get('/api/routes/update/:id', getId, (req, res) => {
     //returns json
     console.log("get request from server", res.tee);
     res.status(200).json(res.tee);
 });
 
 //update one
-router.post('/update/:id', getId, async (req, res) => {
+router.post('/api/routes/update/:id', getId, async (req, res) => {
     console.log("this is the post by id obj ", res.tee);
     console.log("this is the post by id obj req tee title ", req.body.newTitle);
 
@@ -74,7 +74,7 @@ router.post('/update/:id', getId, async (req, res) => {
 });
 
 //delete one
-router.get('/delete/:id', getId, async (req, res) => {
+router.get('/api/routes/delete/:id', getId, async (req, res) => {
     try {
         await res.tee.remove();
         res.json({ message: 'Deleted' });

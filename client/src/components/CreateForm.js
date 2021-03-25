@@ -22,7 +22,7 @@ const CreateForm = () => {
         console.log(tee);
 
         //this is to your express server port NOT REACT server port
-        axios.post('http://localhost:5000/create', tee);
+        axios.post('/api/routes/create', tee);
         //this fires the get all api so when index renders, the new post appears without hitting refresh
         // getTees();
         history.push('/');

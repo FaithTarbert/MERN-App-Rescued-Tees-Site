@@ -14,7 +14,7 @@ const Details = () => {
     const [tee, setTee] = useState([]);
     //useEffect fires a fetch/getall request on first page load
     useEffect(() => {
-        fetch(`/details/${id}`)
+        fetch(`/api/routes/details/${id}`)
         .then(res => {
             if(res.ok) {
                 console.log("response ok");
@@ -28,7 +28,7 @@ const Details = () => {
     const handleDelete = (e) => {
         //this prevents the page from default refreshing
         e.preventDefault();
-        axios.get(`/delete/${id}`);
+        axios.get(`/api/routes/delete/${id}`);
         history.push('/');
     };
 
