@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 const router = express.Router();
 const cors = require('cors');
+const path = require('path');
 
 //connect to mongodb locally (FIRST)
 // mongoose.connect(process.env.DATABASE_URL, {
@@ -35,7 +36,7 @@ const teesRouter = require('./routes/routes');
 app.use('/', teesRouter);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, "react-client/build")));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 // app.listen(3000, () => console.log('Server Started On Port 3000'));
 
