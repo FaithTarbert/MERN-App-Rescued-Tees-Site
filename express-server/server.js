@@ -34,7 +34,14 @@ app.use(express.json());
 const teesRouter = require('./routes/routes');
 app.use('/', teesRouter);
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "react-client/build")));
 
 // app.listen(3000, () => console.log('Server Started On Port 3000'));
 
-app.listen(process.env.PORT || 5000);
+// app.listen(process.env.PORT || 5000);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 5000;
+}
+app.listen(port);
