@@ -31,13 +31,13 @@ app.use(cors());
 //this middleware allows us to use json in an element like get/post etc.
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// app.get('/', (req, res) => {
+//   res.send('Hello World!');
+// });
 
 //require routes file
 const teesRouter = require('./routes/routes');
-app.use('/tee', teesRouter);
+app.use('/', teesRouter);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));
